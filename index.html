@@ -145,22 +145,22 @@
         table.addEventListener('input', function () {
             // 初始化文本框内容
             outputTextArea.value = '';
-            ImgUrl = document.getElementById('ImgUrlInput').textContent;
-            Name = document.getElementById('NameInput').textContent;
-            Camp = document.getElementById('CampInput').textContent;
-            Gender = document.getElementById('GenderInput').textContent;
-            Race = document.getElementById('RaceInput').textContent;
-            Classes = document.getElementById('ClassesInput').textContent;
-            Faith = document.getElementById('FaithInput').textContent;
-            Background = document.getElementById('BackgroundInput').textContent;
-            Age = document.getElementById('AgeInput').textContent;
-            Height = document.getElementById('HeightInput').textContent;
-            Weight = document.getElementById('WeightInput').textContent;
-            Characteristics = document.getElementById('CharacteristicsInput').textContent;
-            ldeal = document.getElementById('ldealInput').textContent;
-            Attachment = document.getElementById('AttachmentInput').textContent;
-            Weaknesses = document.getElementById('WeaknessesInput').textContent;
-            Story = document.getElementById('StoryInput').textContent;
+            ImgUrl = document.getElementById('ImgUrlInput').textContent || ' ';
+            Name = document.getElementById('NameInput').textContent || ' ';
+            Camp = document.getElementById('CampInput').textContent || ' ';
+            Gender = document.getElementById('GenderInput').textContent || ' ';
+            Race = document.getElementById('RaceInput').textContent || ' ';
+            Classes = document.getElementById('ClassesInput').textContent || ' ';
+            Faith = document.getElementById('FaithInput').textContent || ' ';
+            Background = document.getElementById('BackgroundInput').textContent || ' ';
+            Age = document.getElementById('AgeInput').textContent || ' ';
+            Height = document.getElementById('HeightInput').textContent || ' ';
+            Weight = document.getElementById('WeightInput').textContent || ' ';
+            Characteristics = document.getElementById('CharacteristicsInput').textContent || ' ';
+            ldeal = document.getElementById('ldealInput').textContent || ' ';
+            Attachment = document.getElementById('AttachmentInput').textContent || ' ';
+            Weaknesses = document.getElementById('WeaknessesInput').textContent || ' ';
+            Story = document.getElementById('StoryInput').textContent || ' ';
             // 格式化字符串
             result = `[table]
 [tr][td][img width=110]${ImgUrl}[/img][/td]
