@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>果园角色卡展示生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 40%;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        #output {
+            width: 40%;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="dataTable">
+        <tr>
+            <th>信息名称</th>
+            <th>内容</th>
+        </tr>
+        <tr>
+            <td id="ImgUrl">图片url</td>
+            <td id="ImgUrlInput" contenteditable="true">https://api.onedrive.com/v1.0/shares/s!AozdVHUbjt99hcVN_CYLNnd50MZlsA/root/content</td>
+        </tr>
+        <tr>
+            <td id="Name">姓名</td>
+            <td id="NameInput" contenteditable="true">娜拉</td>
+        </tr>
+        <tr>
+            <td id="Camp">阵营</td>
+            <td id="CampInput" contenteditable="true">混乱善良</td>
+        </tr>
+        <tr>
+            <td id="Gender">性别</td>
+            <td id="GenderInput" contenteditable="true">女</td>
+        </tr>
+        <tr>
+            <td id="Race">种族</td>
+            <td id="RaceInput" contenteditable="true">金龙龙裔</td>
+        </tr>
+        <tr>
+            <td id="Classes">职业</td>
+            <td id="ClassesInput" contenteditable="true">吟游诗人</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="Faith">信仰</td>
+            <td id="FaithInput" contenteditable="true">帕拉丁</td>
+        </tr>
+        <tr>
+            <td id="Background">背景</td>
+            <td id="BackgroundInput" contenteditable="true">艺人</td>
+        </tr>
+        <tr>
+            <td id="Age">年龄</td>
+            <td id="AgeInput" contenteditable="true">21</td>
+        </tr>
+        <tr>
+            <td id="Height">身高</td>
+            <td id="HeightInput" contenteditable="true">6.9尺</td>
+        </tr>
+        <tr>
+            <td id="Weight">体重</td>
+            <td id="WeightInput" contenteditable="true">270磅</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="Characteristics">特点</td>
+            <td id="CharacteristicsInput" contenteditable="true">我周围的人都不会生气太久，因为我总能缓和紧张的气氛；打抱不平，理论上说，我常常按自己的判断行善事。</td>
+        </tr>
+        <tr>
+            <td id="ldeal">理想</td>
+            <td id="ldealInput" contenteditable="true">帕拉丁老大保佑我把黑暗之后赶回去！</td>
+        </tr>
+        <tr>
+            <td id="Attachment">牵绊</td>
+            <td id="AttachmentInput" contenteditable="true">我崇拜古老传奇中的某些英雄（修玛）。</td>
+        </tr>
+        <tr>
+            <td id="Weaknesses">缺点</td>
+            <td id="WeaknessesInput" contenteditable="true">我对黑暗之后的爪牙十分厌恶，对他们有时会热血上头。</td>
+        </tr>
+        <tr>
+            <td id="Story">背景故事</td>
+            <td id="StoryInput" contenteditable="true">娜拉，这位几年前出生于一枚被腐化龙蛋的龙人（以另外一个主物质位面的分类，应该是金龙龙裔）被那只执行猎龙任务的索兰尼亚分队送到了玫瑰骑士团的总部，如白袍法师所说的一般，这些玫瑰骑士们并未以异样的眼光看待她，当成了个扈从来培养，只是她并没有这样的潜质，反倒是有一手刷刀耍刺剑的天赋，而玫瑰骑士的拿手好戏“振奋集结”更是被她掌握成了具有魔力的战歌。
+
+                娜拉在骑士团的生活是愉快的，她如那位白袍法师说的一样，几乎做到了骑士守则，只是经常乱来。而她的暴虐则是出现在了对于龙人的讨伐上，用来看过几次的伊斯平·绿盾的话来说，“一头疯掉的龙！比捡你那个巢穴里住的那黑龙都狂！”当然，索兰尼亚骑士们并不认为这有什么问题，毕竟讨伐黑暗之后的龙人大军理所应当。
+                
+                近日，她收到了一个噩耗，那位伊斯平·绿盾先生逝世了，于是娜拉便放下手头的事情，前往了沃格勒镇…….</td>
+        </tr>
+
+
+
+    </table>
+
+    <div id="output">
+        <h3>果园BBCode</h3>
+        <textarea id="dynamicText" rows="10" cols="50" readonly></textarea>
+
+        <h3>说明与效果预览</h3>
+        直接编辑表格，表格内容会自动转换为果园BBCode，复制到果园即可，效果如下。
+        
+        <img src="img1.webp" width="600">
+        <img src="img2.webp" width="600">
+    </div>
+    <script>
+        // 获取表格元素
+        let ImgUrl, Name, Camp, Gender, Race, Classes, Faith, Background, Age, Height, Weight, Characteristics, ldeal, Attachment, Weaknesses, Story;
+        var table = document.getElementById('dataTable');
+
+        // 获取文本框元素
+        var outputTextArea = document.getElementById('dynamicText');
+
+        // 监听表格输入事件
+        table.addEventListener('input', function () {
+            // 初始化文本框内容
+            outputTextArea.value = '';
+            ImgUrl = document.getElementById('ImgUrlInput').textContent;
+            Name = document.getElementById('NameInput').textContent;
+            Camp = document.getElementById('CampInput').textContent;
+            Gender = document.getElementById('GenderInput').textContent;
+            Race = document.getElementById('RaceInput').textContent;
+            Classes = document.getElementById('ClassesInput').textContent;
+            Faith = document.getElementById('FaithInput').textContent;
+            Background = document.getElementById('BackgroundInput').textContent;
+            Age = document.getElementById('AgeInput').textContent;
+            Height = document.getElementById('HeightInput').textContent;
+            Weight = document.getElementById('WeightInput').textContent;
+            Characteristics = document.getElementById('CharacteristicsInput').textContent;
+            ldeal = document.getElementById('ldealInput').textContent;
+            Attachment = document.getElementById('AttachmentInput').textContent;
+            Weaknesses = document.getElementById('WeaknessesInput').textContent;
+            Story = document.getElementById('StoryInput').textContent;
+            // 格式化字符串
+            result = `[table]
+[tr][td][img width=110]${ImgUrl}[/img][/td]
+[td]
+[left][font=楷体][color=purple][b][size=16pt]${Name}[/size][/b][/color][/font][/left]
+[hr]
+[table][tr][td][/td][/tr]
+[tr][td][color=orange][b]${Camp}[/b][/color][/td][td][color=orange][b] ${Gender} ${Race} [/b][/color][/td][td][color=orange][b]${Classes}[/b][/color][/td]
+[/tr]
+[/table]
+[table][tr][td][color=purple][b]信仰[/b] ${Faith} [b]背景[/b] ${Background}[/color][/td][/tr]
+[tr][td][color=purple][b]年龄[/b] ${Age} [b]身高[/b] ${Height} [b]体重[/b] ${Weight} [/color][/td][/tr]
+[tr][td]
+[/td][/tr]
+[/table]
+[table]
+[tr][td]
+[/td][/tr][/table][/td][td][color=purple][size=10pt][b]背景故事[/b][/size]
+[spoiler][quote][size=10pt][b]
+[table][tr][td][b]特点[/b][/td][td]${Characteristics}[/td]
+[/tr][tr]
+[td][b]理想[/b][/td][td]${ldeal}[/td]
+[/tr][tr]
+[td][b]牵绊[/b][/td][td]${Attachment}[/td]
+[/tr][tr]
+[td][b]缺点[/b][/td][td]${Weaknesses}[/td]
+[/tr]
+[/table]
+[hr]
+${Story}[/quote][/td][/tr][/table]`
+            // 输出到文本框
+            outputTextArea.value = result;
+
+        });
+    </script>
+
+</body>
+
+</html>
